@@ -1,12 +1,16 @@
-ethslurp=.
-cflags=-std=c++11 -Wall -O2 -DLINUX -I. -I$(ethslurp)/utillib -I$(ethslurp)/abilib -I$(ethslurp)/etherlib
+#-------------------------------------------------
+libraries=../libs
+bin=../../bin
+cflags=-std=c++11 -Wall -O2 -I. -I$(libraries)/utillib -I$(libraries)/abilib -I$(libraries)/etherlib
 
+#-------------------------------------------------
 # for mac builds
-libs=*/*.a /usr/lib/libcurl.dylib
+libs=$(libraries)/*.a /usr/lib/libcurl.dylib
 # for ubuntu builds
-#libs=*/*.a -lcurl
+#libs=$(libraries)/*.a -lcurl
 
 product=ethslurp
+
 src= \
 ethslurp.cpp \
 slurp_options.cpp
@@ -18,9 +22,7 @@ objects = $(patsubst %.cpp,objs/%.o,$(src))
 objs=./objs
 
 all:
-	@cd utillib; make; cd ..
-	@cd abilib; make; cd ..
-	@cd etherlib; make; cd ..
+	@cd $(libraries) ; make | grep -v 'up to date'
 	@echo "$(product) build started"
 	@echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 	@make $(product)
@@ -47,7 +49,7 @@ back:
 	@cp -pR ~/.ethslurp/configs       theData/backup/
 	@cp -pR ~/.ethslurp/slurps        theData/backup/
 	@cp -p  ~/.ethslurp/ethslurp.conf theData/backup/
-	@cp -p  ~/.ethslurp/prices.bin    theData/backup/
+#	@cp -p  ~/.ethslurp/prices.bin    theData/backup/
 
 $(product): $(objects) $(libs)
 	$(CXX) -o $(product) $(objects) $(libs)
@@ -62,10 +64,8 @@ objs/%.o : %.cpp
 	$(CXX) $(CXXFLAGS) $(cflags) -c $< -o $@
 
 cleanall:
+	@cd $(libraries) ; make clean ; cd -
 	@make clean
 
 clean:
-	@cd utillib; make clean; cd ..
-	@cd abilib; make clean; cd ..
-	@cd etherlib; make clean; cd ..
 	-@$(RM) -f $(product) $(objs)/*.o $(objs)/*.a 2> /dev/null

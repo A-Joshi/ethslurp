@@ -32,8 +32,8 @@ class CBlock
 //r		SFString gasUsed;
 //		SFHash hash;
 		SFString input;
-		SFBool isError;
-		SFBool isInternalTx;
+		bool isError;
+		bool isInternalTx;
 		SFInt32 nonce;
 //		SFHash r;
 //		SFString raw;
@@ -69,7 +69,7 @@ class CBlock
 			SFString returnValue;
 			CStructLogArray structLogs;
 				SFInt32 depth;
-				SFBool error;
+				bool error;
 				SFInt32 gas;
 				SFInt32 gasCost;
 				SFStringArray memory;

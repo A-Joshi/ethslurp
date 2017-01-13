@@ -616,9 +616,9 @@ SFBool establishFolders(CConfig& config, const SFString& vers)
 	config.SetProfileString("DISPLAY_STR",  "fmt_json_record",   "\\n        {\\n[{FIELDS}]        },");
 	config.SetProfileString("DISPLAY_STR",  "fmt_json_field",    "\"[{p:FIELD}]\":\"[{FIELD}]\",");
 
-	config.SetProfileString("DISPLAY_STR",  "fmt_custom_file",   "file:custom_format_file.html");
+	config.SetProfileString("DISPLAY_STR",  "fmt_custom_file",	 "file:custom_format_file.html");
 	config.SetProfileString("DISPLAY_STR",  "fmt_custom_record", "fmt_html_record");
-	config.SetProfileString("DISPLAY_STR",  "fmt_custom_field",  "fmt_html_field");
+	config.SetProfileString("DISPLAY_STR",  "fmt_custom_field",	 "fmt_html_field");
 
 	config.writeFile(vers);
 	return SFos::fileExists(config.getFilename());
