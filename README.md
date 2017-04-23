@@ -1,3 +1,3 @@
 # quickBlocks: ethslurp
 
-EthSlurp is undergoing refactoring as part of our forthcoming quickBlocks release. Stay tuned.
+The EthSlurp repo has been moved here: https://github.com/Great-Hill-Corporation/quickBlocks/tree/master/src/apps/ethslurp
