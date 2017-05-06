@@ -1,3 +1,3 @@
 # quickBlocks: ethslurp
 
-The EthSlurp repo has been moved here: https://github.com/Great-Hill-Corporation/quickBlocks/tree/master/src/apps/ethslurp
+The EthSlurp project has been subsumed by a much larger and more ambitious project called **quickBlocks**. You can find that repo here: https://github.com/Great-Hill-Corporation/quickBlocks
